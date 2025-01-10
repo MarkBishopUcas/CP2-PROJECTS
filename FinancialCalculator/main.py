@@ -2,7 +2,7 @@
 
 def savings_goal_func():
     savings_weekly_monthly=0
-    if int(input("This is the savings goal calculator, you set an item, how much money it costs, \nhow often you will deposit money, and how much, and we will tell you how long \nit will take to save for it. Continue(1) Go back to menu(2)")) == 1:
+    if int(input("\nThis is the savings goal calculator, you set an item, how much money it costs, \nhow often you will deposit money, and how much, and we will tell you how long \nit will take to save for it.\n\n1. Continue \n\n2. Go back to menu\n\nEnter the number corresponding to your choice: ")) == 1:
 
         savings_for=input("What item are you saving for? ")
         savings_goal_amount=float(input("How much money would you like to save up for? $"))
@@ -23,7 +23,7 @@ def savings_goal_func():
         print("going back to main menu...")
 
 def compound_interest_func():
-    if int(input("This is the coumpound interest calculator, you enter in your principle amount, \nwhich is the amount you depositit, or the amount you loaned, then you enter your \nanual interest rate, next you enter how many times it compounds per year, finnaly \nyou enter the amount of years you're saving it for, then it will output the interest on that money \n1. Continue \n2. Go back to menu\nEnter the number corresponding to your choice: ")) == 1:
+    if int(input("\nThis is the coumpound interest calculator, you enter in your principle amount, \nwhich is the amount you depositit, or the amount you loaned, then you enter your \nanual interest rate, next you enter how many times it compounds per year, finnaly \nyou enter the amount of years you're saving it for, then it will output the interest on that money \n\n1. Continue \n\n2. Go back to menu\n\nEnter the number corresponding to your choice: ")) == 1:
         principle_amount=float(input("What is the principle amount? $"))
         anual_intrest_rate=float(input("what is the anual intrest rate? enter as a decimal: "))
         times_compounded=int(input("How many times is it compounded per year? "))
@@ -34,7 +34,7 @@ def compound_interest_func():
         print("going back to main menu...")
 
 def budget_allocator_func():
-    if int(input("Welcome to the Budget Allocator!\nEnter your total budget, divide it into sections, and assign percentages to each.\n1. Continue\n2. Go back\nEnter your choice: ")) == 1:
+    if int(input("Welcome to the Budget Allocator!\nEnter your total budget, divide it into sections, and assign percentages to each.\n\n1. Continue \n\n2. Go back to menu\n\nEnter the number corresponding to your choice: ")) == 1:
         budget=float(input("How much money do you want to budget? $"))
         number_of_items=int(input("how many sections do you want to split your budget into? "))
         budget_list=[]
@@ -51,15 +51,19 @@ def budget_allocator_func():
             for i in range(number_of_items):
                 percentage=float(input(f"assign a % to {budget_list[i]}: "))
                 percentages.append(percentage)
-        print("Here is your budget allocation")
-        for i in range(number_of_items):
+        if sum(percentages) < 100:
+            leftover=(100-sum(percentages))
+            budget_list.append("Leftover")
+            percentages.append(float(leftover))
+        print("\nHere is your budget allocation")
+        for i in range(number_of_items+1):
             amount=(percentages[i]/100)*budget
-            print(f"{budget_list[i]}: ${amount:.2f} ({percentages[i]}%)")
+            print(f"\n{budget_list[i]}: ${amount:.2f} ({percentages[i]}%)")
     else:
         print("going back to main menu...")
 def discount_calculator_func():
-    if int(input("Welcome to the Discount Calculator!\nEnter the original price, the discount percentage, and find out how much you save.\n1. Continue\n2. Go back\nEnter your choice: ")) == 1:
-        original_price=float(input("Enter the original price "))
+    if int(input("Welcome to the Discount Calculator!\nEnter the original price, the discount percentage, and find out how much you save.\n\n1. Continue \n\n2. Go back to menu\n\nEnter the number corresponding to your choice: ")) == 1:
+        original_price=float(input("What was the original price? $"))
         discount_percent=float(input("Enter the dsicount % "))
         discount_amount=(original_price*discount_percent)/100
         final_price=(original_price-discount_amount)
@@ -68,8 +72,8 @@ def discount_calculator_func():
         print("going back to main menu...")
 
 def tip_calculator_func():
-    if int(input("Welcome to the Tip Calculator!\nEnter the bill amount and the tip percentage, and it will calculate the tip and total.\n1. Continue\n2. Go back\nEnter your choice: ")) == 1:
-        price_amount=float(input("What was the cost of the bill? "))
+    if int(input("Welcome to the Tip Calculator!\nEnter the bill amount and the tip percentage, and it will calculate the tip and total.\n\n1. Continue \n\n2. Go back to menu\n\nEnter the number corresponding to your choice: ")) == 1:
+        price_amount=float(input("What was the price? $"))
         tip_percent=float(input("What % would you like to tip: "))
         tip_amount=(price_amount*tip_percent)/100
         print(f"For a {tip_percent}% tip, you need to leave ${tip_amount:.2f}")
@@ -102,7 +106,7 @@ def main():
                 discount_calculator_func()
             elif services==(5):
                 tip_calculator_func()
-        if int(input("Would you like to use any of our other services?\n1. Yes\n2. No\nEnter the number corresponding to your choice: "))==2:
+        if int(input("\nWould you like to use any of our other services?\n\n1. Yes\n\n2. No\n\nEnter the number corresponding to your choice: "))==2:
             print("Thank you for using the financial calculator!")
             break
         else:
