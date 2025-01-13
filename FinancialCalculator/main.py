@@ -1,5 +1,6 @@
 # Mark Bishop Financial Calculator
 
+#this is the function for the saving goal calculator 
 def savings_goal_func():
     savings_weekly_monthly=0
     if int(input("\nThis is the savings goal calculator, you set an item, how much money it costs, \nhow often you will deposit money, and how much, and we will tell you how long \nit will take to save for it.\n\n1. Continue \n\n2. Go back to menu\n\nEnter the number corresponding to your choice: ")) == 1:
@@ -22,6 +23,7 @@ def savings_goal_func():
     else:
         print("going back to main menu...")
 
+#this is the function for the compound interest caclulator
 def compound_interest_func():
     if int(input("\nThis is the coumpound interest calculator, you enter in your principle amount, \nwhich is the amount you depositit, or the amount you loaned, then you enter your \nanual interest rate, next you enter how many times it compounds per year, finnaly \nyou enter the amount of years you're saving it for, then it will output the interest on that money \n\n1. Continue \n\n2. Go back to menu\n\nEnter the number corresponding to your choice: ")) == 1:
         principle_amount=float(input("What is the principle amount? $"))
@@ -32,6 +34,14 @@ def compound_interest_func():
         print(f"After {time_period} years, the final amount will be {final_amount}")
     else:
         print("going back to main menu...")
+
+#This is a function used in the budget allocator calculator
+
+def percent_assigner_func():
+    print("WIP")
+
+#This is the fucntion for the budget allocator calculator
+
 
 def budget_allocator_func():
     if int(input("Welcome to the Budget Allocator!\nEnter your total budget, divide it into sections, and assign percentages to each.\n\n1. Continue \n\n2. Go back to menu\n\nEnter the number corresponding to your choice: ")) == 1:
@@ -44,7 +54,7 @@ def budget_allocator_func():
         percentages=[]
         for i in range(number_of_items):
             percentage=float(input(f"assign a % to {budget_list[i]}: "))
-            percentages.append(percentage)
+            percentages.append(percentage)    
         while sum(percentages) > 100:
             print(f"Warning: Total percentage is {sum(percentages)}%. The total must equal to, or less than 100%.")
             percentages=[]
@@ -61,6 +71,8 @@ def budget_allocator_func():
             print(f"\n{budget_list[i]}: ${amount:.2f} ({percentages[i]}%)")
     else:
         print("going back to main menu...")
+
+#this is function for the discount calculator
 def discount_calculator_func():
     if int(input("Welcome to the Discount Calculator!\nEnter the original price, the discount percentage, and find out how much you save.\n\n1. Continue \n\n2. Go back to menu\n\nEnter the number corresponding to your choice: ")) == 1:
         original_price=float(input("What was the original price? $"))
@@ -71,6 +83,7 @@ def discount_calculator_func():
     else:
         print("going back to main menu...")
 
+#this is the function for the tip calculator
 def tip_calculator_func():
     if int(input("Welcome to the Tip Calculator!\nEnter the bill amount and the tip percentage, and it will calculate the tip and total.\n\n1. Continue \n\n2. Go back to menu\n\nEnter the number corresponding to your choice: ")) == 1:
         price_amount=float(input("What was the price? $"))
@@ -80,6 +93,7 @@ def tip_calculator_func():
     else:
         print("going back to main menu...")
     
+#this is the main function 
 def main():
     services=0 
     print("Welcome to the financial calculator.")
