@@ -45,20 +45,18 @@ def budget_allocator_func():
             item=input(f"add item {i+1} to the list: ")
             budget_list.append(item)
         while True:
-            percentages=[]
+            percentages = []
             for i in range(number_of_items):
-                percentage=float(input(f"assign a % to {budget_list[i]}: "))
-                percentages.append(percentage)    
+                percentage = float(input(f"Assign a % to {budget_list[i]}: "))
+                percentages.append(percentage)
                 if sum(percentages) > 100:
-                    print(f"Warning: Total percentage is {sum(percentages)}%. The total must equal to, or less than 100%.")
+                    print(f"Warning: Total percentage is {sum(percentages)}%. Please reassign the percentages.")
                     break
-                else:
-                    break
-            
+            break
         if sum(percentages) < 100:
-            leftover=(100-sum(percentages))
-            budget_list.append("Leftover")
-            percentages.append(float(leftover))
+                    leftover = 100 - sum(percentages)
+                    budget_list.append("Leftover")
+                    percentages.append(leftover)
         print("\nHere is your budget allocation")
         for i in range(number_of_items+1):
             amount=(percentages[i]/100)*budget
