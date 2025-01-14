@@ -35,14 +35,7 @@ def compound_interest_func():
     else:
         print("going back to main menu...")
 
-#This is a function used in the budget allocator calculator
-
-def percent_assigner_func():
-    print("WIP")
-
 #This is the fucntion for the budget allocator calculator
-
-
 def budget_allocator_func():
     if int(input("Welcome to the Budget Allocator!\nEnter your total budget, divide it into sections, and assign percentages to each.\n\n1. Continue \n\n2. Go back to menu\n\nEnter the number corresponding to your choice: ")) == 1:
         budget=float(input("How much money do you want to budget? $"))
@@ -51,20 +44,19 @@ def budget_allocator_func():
         for i in range(number_of_items):
             item=input(f"add item {i+1} to the list: ")
             budget_list.append(item)
-        percentages=[]
-        for i in range(number_of_items):
-            percentage=float(input(f"assign a % to {budget_list[i]}: "))
-            percentages.append(percentage)    
-        while sum(percentages) > 100:
-            print(f"Warning: Total percentage is {sum(percentages)}%. The total must equal to, or less than 100%.")
-            percentages=[]
+        while True:
+            percentages = []
             for i in range(number_of_items):
-                percentage=float(input(f"assign a % to {budget_list[i]}: "))
+                percentage = float(input(f"Assign a % to {budget_list[i]}: "))
                 percentages.append(percentage)
+                if sum(percentages) > 100:
+                    print(f"Warning: Total percentage is {sum(percentages)}%. Please reassign the percentages.")
+                    break
+            break
         if sum(percentages) < 100:
-            leftover=(100-sum(percentages))
-            budget_list.append("Leftover")
-            percentages.append(float(leftover))
+                    leftover = 100 - sum(percentages)
+                    budget_list.append("Leftover")
+                    percentages.append(leftover)
         print("\nHere is your budget allocation")
         for i in range(number_of_items+1):
             amount=(percentages[i]/100)*budget
