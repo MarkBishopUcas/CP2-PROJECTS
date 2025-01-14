@@ -51,6 +51,7 @@ def budget_allocator_func():
                 percentages.append(percentage)    
                 if sum(percentages) > 100:
                     print(f"Warning: Total percentage is {sum(percentages)}%. The total must equal to, or less than 100%.")
+                    break
                 else:
                     break
             
@@ -90,3 +91,34 @@ def tip_calculator_func():
 def main():
     services=0 
     print("Welcome to the financial calculator.")
+    while True:
+        while services not in [1, 2, 3, 4, 5]:
+            print("please choose an option")
+            print("1. Savings goal calculator")
+            print("2. Compound interest calculator")
+            print("3. Budget allocator")
+            print("4. Discount calculator")
+            print("5. Tip calculator")
+            services=int(input("Enter the number corresponding to your choice: "))
+            if services not in [1, 2, 3, 4, 5]:
+                print("Please choose a number 1-5")
+        
+        else:
+            if services==(1):
+                savings_goal_func()
+            elif services==(2):
+                compound_interest_func()
+            elif services==(3):
+                budget_allocator_func()
+            elif services==(4):
+                discount_calculator_func()
+            elif services==(5):
+                tip_calculator_func()
+        if int(input("\nWould you like to use any of our other services?\n\n1. Yes\n\n2. No\n\nEnter the number corresponding to your choice: "))==2:
+            print("Thank you for using the financial calculator!")
+            break
+        else:
+            services=0 
+
+if __name__=="__main__":
+    main()
