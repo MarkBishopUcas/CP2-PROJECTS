@@ -35,14 +35,7 @@ def compound_interest_func():
     else:
         print("going back to main menu...")
 
-#This is a function used in the budget allocator calculator
-
-def percent_assigner_func():
-    print("WIP")
-
 #This is the fucntion for the budget allocator calculator
-
-
 def budget_allocator_func():
     if int(input("Welcome to the Budget Allocator!\nEnter your total budget, divide it into sections, and assign percentages to each.\n\n1. Continue \n\n2. Go back to menu\n\nEnter the number corresponding to your choice: ")) == 1:
         budget=float(input("How much money do you want to budget? $"))
@@ -51,16 +44,16 @@ def budget_allocator_func():
         for i in range(number_of_items):
             item=input(f"add item {i+1} to the list: ")
             budget_list.append(item)
-        percentages=[]
-        for i in range(number_of_items):
-            percentage=float(input(f"assign a % to {budget_list[i]}: "))
-            percentages.append(percentage)    
-        while sum(percentages) > 100:
-            print(f"Warning: Total percentage is {sum(percentages)}%. The total must equal to, or less than 100%.")
+        while True:
             percentages=[]
             for i in range(number_of_items):
                 percentage=float(input(f"assign a % to {budget_list[i]}: "))
-                percentages.append(percentage)
+                percentages.append(percentage)    
+                if sum(percentages) > 100:
+                    print(f"Warning: Total percentage is {sum(percentages)}%. The total must equal to, or less than 100%.")
+                else:
+                    break
+            
         if sum(percentages) < 100:
             leftover=(100-sum(percentages))
             budget_list.append("Leftover")
@@ -97,34 +90,3 @@ def tip_calculator_func():
 def main():
     services=0 
     print("Welcome to the financial calculator.")
-    while True:
-        while services not in [1, 2, 3, 4, 5]:
-            print("please choose an option")
-            print("1. Savings goal calculator")
-            print("2. Compound interest calculator")
-            print("3. Budget allocator")
-            print("4. Discount calculator")
-            print("5. Tip calculator")
-            services=int(input("Enter the number corresponding to your choice: "))
-            if services not in [1, 2, 3, 4, 5]:
-                print("Please choose a number 1-5")
-        
-        else:
-            if services==(1):
-                savings_goal_func()
-            elif services==(2):
-                compound_interest_func()
-            elif services==(3):
-                budget_allocator_func()
-            elif services==(4):
-                discount_calculator_func()
-            elif services==(5):
-                tip_calculator_func()
-        if int(input("\nWould you like to use any of our other services?\n\n1. Yes\n\n2. No\n\nEnter the number corresponding to your choice: "))==2:
-            print("Thank you for using the financial calculator!")
-            break
-        else:
-            services=0 
-
-if __name__=="__main__":
-    main()
