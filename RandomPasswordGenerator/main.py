@@ -3,10 +3,6 @@ import random
 
 #password generator function. the reason i only used one function this whole time, is that really nothing needed to be repeated, and the stuff that was repeated needed to be done in loops
 def req_getter_func():
-    try:
-        length = int(input("\nHow many characters long does your password need to be? "))
-    except:
-        print("Please only enter in a whole number.")
 
     #the method i use for making sure the user only inputs one of the selected options needs the variables to be initialised beforhand 
     uppercase = 0
@@ -80,7 +76,7 @@ def req_getter_func():
 def main():
     while True:
         req_getter_func()
-        if int(input("would you like to generate any more passwords?\n\n(1) Yes\n\n(2) No\nPlease select the number corrosponding to your option: ")) == 2:
+        if int(input("would you like to generate any more passwords?\n\n(1) Yes\n\n(2) No\n\nPlease select the number corrosponding to your option: ")) == 2:
             print("\nThank you for using our Random Password Generator!")
             break
 
