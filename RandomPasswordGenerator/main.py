@@ -3,12 +3,24 @@ import random
 
 #password generator function. the reason i only used one function this whole time, is that really nothing needed to be repeated, and the stuff that was repeated needed to be done in loops
 def req_getter_func():
-    length = int(input("\nHow many characters long does your password need to be? "))
+    try:
+        length = int(input("\nHow many characters long does your password need to be? "))
+    except:
+        print("Please only enter in a whole number.")
 
     #the method i use for making sure the user only inputs one of the selected options needs the variables to be initialised beforhand 
     uppercase = 0
     number = 0
     spec_char = 0
+    length = 0
+
+    while length < 1:
+        try:
+            length = int(input("\nHow many characters long does your password need to be? "))
+            if length < 1:
+                print("Your password must be at least 1 charecter long")
+        except:
+            print("\nPlease only enter in a whole number.")
 
     #this is initialising the lists for later use
     uppsers = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -17,19 +29,28 @@ def req_getter_func():
     spec_chars = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "[", "{", "|", ";", ":", ",", "\\", '"', "'", "<", ".", ">", "/", "?", "`", "~", "}", "]"]
 
     while uppercase > 3 or uppercase < 1:
-        uppercase = int(input("\nDoes your password need to have uppercase letters?\n\n(1) Only lowercase letters\n\n(2) Lowercase and uppercase letters\n\n(3) Only uppercase letters\n\nPlease type the number of your option: "))
-        if uppercase > 3 or uppercase < 1:
-            print("\nPlease select only 1, 2, or 3\n")
+        try:
+            uppercase = int(input("\nDoes your password need to have uppercase letters?\n\n(1) Only lowercase letters\n\n(2) Lowercase and uppercase letters\n\n(3) Only uppercase letters\n\nPlease type the number of your option: "))
+            if uppercase > 3 or uppercase < 1:
+                print("\nPlease select only 1, 2, or 3\n")
+        except:
+            print("\nPlease only enter a whole number.")
 
     while number > 2 or number < 1:
-        number = int(input("\nDoes your password need to have numbers?\n\n(1) Yes\n\n(2) No\n\nPlease type the number of your option: "))
-        if number > 2 or number < 1:
-            print("\nPlease select only 1 or 2\n")
+        try:
+            number = int(input("\nDoes your password need to have numbers?\n\n(1) Yes\n\n(2) No\n\nPlease type the number of your option: "))
+            if number > 2 or number < 1:
+                print("\nPlease select only 1 or 2\n")
+        except:
+            print("\nPlease only enter a whole number.")
 
     while spec_char > 2 or spec_char < 1:
-        spec_char = int(input("\nDoes your password need to have special characters?\n\n(1) Yes\n\n(2) No\n\nPlease type the number of your option: "))
-        if spec_char > 2 or spec_char < 1:
-            print("\nPlease select only 1 or 2\n")
+        try:
+            spec_char = int(input("\nDoes your password need to have special characters?\n\n(1) Yes\n\n(2) No\n\nPlease type the number of your option: "))
+            if spec_char > 2 or spec_char < 1:
+                print("\nPlease select only 1 or 2\n")
+        except:
+            print("\nPlease only enter a whole number.")
 
     # Generate 4 passwords
     for i in range(4):
