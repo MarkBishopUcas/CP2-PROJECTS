@@ -1,5 +1,5 @@
 # this is for myself so i can easily run it in the web browser version of vs code python3 /workspaces/CP2-PROJECTS/MorseCodeTranslator/main.py
-#this is what i was doing before, but then i read on the assignment that it requires lists instead of dictionaries. 
+#this is what i was doing before, but then i read on the assignment that it requires lists instead of dictionaries. i spent forever making the dictionaries just to realise they are useless T-T im leaving them here since i at least want my hard work to be seen. 
 '''
 dict_char_to_morse = { 
     "a" : ".-",
