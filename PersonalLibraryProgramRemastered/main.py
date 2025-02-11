@@ -1,19 +1,23 @@
 # Function for adding items to the library
 def add_item_func(library):
     for i in range(int(input("How many items do you want to add to your library? "))):
+        #makes the book dictionary empty 
         book = {}
-
+        #.strip() makes sure there isnt any acidental spaces, before or after from the user, and .lower() makes it easier to store, because it only needs to be capitalised when its being printed which can be done with .title()
         book["type"] = input(f"Is item {i+1} a book, or a movie? ").strip().lower()
         book["name"] = input(f"What is the name of your {book["type"]}? ").strip().lower()
         book["author"] = input("What is the name of the author? ").strip().lower()
         book["length"] = input(f"How long is the {book["type"]}? (enter only as a number) ").strip()
         book["genre"] = input(f"What genres does the {book["type"]} fit into? (format: horror, fiction, historic, etc.) ").strip().lower()
 
+        #converts library tuple to a list to append the book dictionary 
         library = list(library)
         library.append(book)
         library = tuple(library)
     
+    #essentially a fancier for i in range(len(library)):
     for i, book in enumerate(library, start=1):
+        #f makes it an f string \n makes it a new line to make it look better, {book["name"].title()} will print the name, {book["type"].title()} prints if its a book or movie, {book["author"].title()} prints the authors name, {book["length"]} is the length of the book, and {book["genre"].title()} is the genere of the book. this is repeated for all items
         print(f"\n{i}. {book["name"].title()} - {book["type"].title()} by {book["author"].title()}, Length: {book["length"]}, Genres: {book["genre"].title()}")
 
     return library
@@ -86,12 +90,27 @@ def modify_func(library):
 
 # Function for viewing the library
 def viewer_func(library):
+    #checks if the library has items in it 
     if not library:
         print("Your library is empty! Add some items first.")
         return
-
-    for i, book in enumerate(library, start=1):
-        print(f"\n{i}. {book["name"].title()} - {book["type"].title()} by {book["author"].title()}, Length: {book["length"]}, Genres: {book["genre"].title()}")
+    #this is just a simple set of checks to make sure that the 
+    else:
+        while True:
+            try:
+                selection = int(input("\nHow would you like to view your library?\n\n(1) Simple view\n\n(2) Complex view\n\nPlease type the number corrosponding to your selection: "))
+                if selection == 1:
+                    for i, book in enumerate(library, start=1):
+                        print(f"\n{i}. {book["name"].title()} by {book["author"].title()}")
+                    break
+                elif selection == 2:
+                    for i, book in enumerate(library, start=1):
+                        print(f"\n{i}. {book["name"].title()} - {book["type"].title()} by {book["author"].title()}, Length: {book["length"]}, Genres: {book["genre"].title()}")
+                    break
+                else:
+                    print("\nPlease only enter 1, or 2.")
+            except:
+                print("\nPlease only enter in a whole number")
 
 # Main function
 def main():
