@@ -128,7 +128,7 @@ def morse_to_english():
     #this is initialising the list before using it, because im pretty sure you cant use append on a list if it dosent exist
     translated = []
     #this is initialising the not reconised booleen because if an object isnt reconised it prints # and cheks if not reconised is true. 
-    not_reconised = False
+    not_recognized = False
     #this is for objects in translate, so for each charecter that is in your input 
     for i in range(len(translate)):
             #checks if the object can be translated to, if not replaces it with hastag
@@ -140,10 +140,10 @@ def morse_to_english():
             if translate[i] not in morse_codes:
                 translate[i] = "#"
                 translated.append(f" {translate[i]} ")
-                not_reconised = True
+                not_recognized = True
     #outp is the outpt. "".join joins all characters with no space. 
     outp = "".join(translated)
-    if not_reconised:
+    if not_recognized:
         print("\nWe saw some unreconised characters in your inputed text, we have replaced them with #'s.")
     print(f"\nhere is your translated text:\n\n{outp}")
     #im clearing the lists just in case it messes with the thing if you go back through. 
@@ -157,7 +157,7 @@ def english_to_morse():
 
     translate = list(inp)
     translated = []
-    not_reconised = False
+    not_recognized = False
     for i in range(len(translate)):
         try:
             translated.append(morse_codes[characters.index(translate[i])])
@@ -165,9 +165,9 @@ def english_to_morse():
             if translate[i] not in characters:
                 translate[i] = "#"
                 translated.append(f" {translate[i]} ")
-                not_reconised = True
+                not_recognized = True
     outp = " ".join(translated)
-    if not_reconised:
+    if not_recognized:
         print("\nWe saw some unreconised characters in your inputed text, we have replaced them with #'s.")
     print(f"\nhere is your translated text:\n\n{outp}")
     #im clearing the lists just in case it messes with the thing if you go back through. 
