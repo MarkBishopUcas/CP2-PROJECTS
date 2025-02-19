@@ -126,24 +126,30 @@ def apply_filters():
         except:
             print("\nPlease enter a valid number.")
 
+# Function to print all movies
+def print_all_movies():
+    for i in range(len(titles)):
+        print(f"\nTitle: {titles[i]}\nDirector: {directors[i]}\nGenre: {genres[i]}\nRating: {ratings[i] if ratings[i] else 'Unrated'}\nLength (min): {lengths[i]}\nNotable Actors: {actors[i]}")
+
 # Main program loop
 def main():
     while True:
         try:
-            selection = int(input("\nMain Menu:\n(1) Search for a movie\n(2) Apply filters\n(3) Exit program\nEnter your choice: "))
+            selection = int(input("\nMain Menu:\n(1) Search for a movie\n(2) Apply filters\n(3) Print all movies\n(4) Exit program\nEnter your choice: "))
 
             if selection == 1:
                 search_movies()
             elif selection == 2:
                 apply_filters()
             elif selection == 3:
+                print_all_movies()
+            elif selection == 4:
                 print("\nThank you for using the Movie Recommender! Hope you find a great movie!")
                 break
             else:
-                print("\nPlease enter a number between 1-3.")
+                print("\nPlease enter a number between 1-4.")
         except:
             print("\nPlease enter a valid number.")
 
 if __name__ == "__main__":
     main()
-
