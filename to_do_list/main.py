@@ -129,7 +129,7 @@ def main():
                                   "(2) Add Item to To-Do List\n"
                                   "(3) Mark Item as Complete\n"
                                   "(4) Delete Item from To-Do List\n"
-                                  "(5) Exit\n\n"
+                                  "(5) Save and exit\n\n"
                                   "Please type the number corresponding to your selection: "))
 
             # Process user selection
@@ -146,6 +146,7 @@ def main():
                     delete_item()
             elif selection == 5:
                 print("Thank you for using our To-Do list manager, come again soon.")
+                save_item()
                 break  # Exit the program
             else:
                 print("Please only enter a number 1-5")
