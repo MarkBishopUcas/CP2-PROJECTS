@@ -1,0 +1,4 @@
+name,class,attribute,speed,strength,defense,magic,mana,critical_hit_%
+jake,archer,speedster,40,20,20,0,0,6
+mage,magic,lucksmith,20,10,40,40,60,15
+
