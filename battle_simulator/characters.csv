@@ -1,0 +1,3 @@
+name,class,attribute,speed,strength,defense,critical_hit_%,level
+josh,warrior,speedster,50,20,20,5,1
+evil,monk,lucky,10000,350000,100000,250000,3
