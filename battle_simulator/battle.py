@@ -64,14 +64,19 @@ def attack_damage(attacker, attacker_stats, defender_stats):
 
 # Function to handle PvE battle sequence
 def pve_battle():
+    characters = get_character_list()
+    if len(characters) < 2:
+        print("Not enough characters available! Returning to the main menu...")
+        return  # This will return to the main menu loop
+
     print("Player character selection:")
     player = select_character()
     player_stats = load_character_stats(player)
-    
+
     print("CPU character is being selected...")
     cpu = select_character(excluded=[player])
     cpu_stats = load_character_stats(cpu)
-    
+
     print(f"You selected {player}. The CPU will use {cpu}.")
     
     skip_turn = False
@@ -103,12 +108,12 @@ def pve_battle():
         else:
             print(f"{player} skips this turn due to the power attack!")
             skip_turn = False
-        
+
         if cpu_stats["hp"] <= 0:
             print(f"{cpu} has been defeated! {player} wins!")
             chatecter_creation.level_up_character(player.lower())
             break
-        
+
         print(f"\n{cpu}'s Turn! Current HP: {cpu_stats['hp']}")
         cpu_choice = random.choice(["1", "1", "2", "3"])  # Weighted to prefer normal attacks
         if cpu_choice == "1":
@@ -123,11 +128,11 @@ def pve_battle():
         elif cpu_choice == "3":
             cpu_stats["hp"] = min(100, cpu_stats["hp"] + 15)
             print(f"{cpu} heals 15 HP!")
-        
+
         if player_stats["hp"] <= 0:
             print(f"{player} has been defeated! {cpu} wins!")
             chatecter_creation.level_up_character(cpu.lower()) 
             break
-    
+
 # Start a PvE battle
 #pve_battle()
