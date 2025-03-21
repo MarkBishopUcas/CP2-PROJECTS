@@ -78,17 +78,15 @@ def pve_battle():
     cpu_stats = load_character_stats(cpu)
 
     print(f"You selected {player}. The CPU will use {cpu}.")
-    
+    #checks if your turn is being skiped 
     skip_turn = False
     while player_stats["hp"] > 0 and cpu_stats["hp"] > 0:
         if not skip_turn:
-            print(f"\n{player}'s Turn! Current HP: {player_stats['hp']}")
-            print("(1) Normal Attack")
-            print("(2) Power Attack (Deals more damage but skips next turn)")
-            print("(3) Heal (+15 HP)")
+            print(f"\n{player}'s Turn! Current HP: {player_stats['hp']}\n(1) Normal Attack\n(2) Power Attack (Deals more damage but skips next turn\n(3) Heal (+15 HP)")
             
             while True:
                 choice = input("Choose an action: ")
+                # a new way i foud of checking user input without using try 
                 if choice in ["1", "2", "3"]:
                     break
                 print("Invalid choice, please select again.")
@@ -108,14 +106,14 @@ def pve_battle():
         else:
             print(f"{player} skips this turn due to the power attack!")
             skip_turn = False
-
+        #checks if the cpu is dead, if it is the players charecter wins, and gains a level
         if cpu_stats["hp"] <= 0:
             print(f"{cpu} has been defeated! {player} wins!")
             chatecter_creation.level_up_character(player.lower())
             break
 
         print(f"\n{cpu}'s Turn! Current HP: {cpu_stats['hp']}")
-        cpu_choice = random.choice(["1", "1", "2", "3"])  # Weighted to prefer normal attacks
+        cpu_choice = random.choice(["1", "1", "2", "3"])  # radom choice maker for the cpu, it has 2 1's so the cpu is more likley to do a light attack
         if cpu_choice == "1":
             damage = attack_damage(cpu, cpu_stats, player_stats)
             player_stats["hp"] -= damage
@@ -129,6 +127,7 @@ def pve_battle():
             cpu_stats["hp"] = min(100, cpu_stats["hp"] + 15)
             print(f"{cpu} heals 15 HP!")
 
+        #checks if the player is dead, if the player is dead, then the cpu's charecter wins, and gains a level for winning.
         if player_stats["hp"] <= 0:
             print(f"{player} has been defeated! {cpu} wins!")
             chatecter_creation.level_up_character(cpu.lower()) 
