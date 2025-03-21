@@ -12,22 +12,6 @@ def get_character_list():
             characters.append(row[0].capitalize())  # Capitalize names
     return characters
 
-# Function to load character stats from the CSV file
-def load_character_stats(character_name):
-    with open("battle_simulator/characters.csv", "r", newline="") as file:
-        reader = csv.reader(file)
-        next(reader)  # Skip header row
-        for row in reader:
-            if row[0].lower() == character_name.lower():
-                return {
-                    "hp": 100,
-                    "attack_min": int(int(row[4]) // 2),  # Convert strength to int before division
-                    "attack_max": int(row[4]),      # Max attack is the full strength stat
-                    "defense": int(row[5]),
-                    "dodge_chance": int(row[3]),    # Dodge chance now based on speed
-                    "crit_chance": int(row[6])      # Critical hit chance
-                }
-    return None
 
 # Function to select a character, avoiding those in the excluded list
 def select_character(excluded=[]):
@@ -64,6 +48,22 @@ def attack_damage(attacker, attacker_stats, defender_stats):
 
 # Function to handle PvE battle sequence
 def pve_battle():
+    # Function to load character stats from the CSV file
+    def load_character_stats(character_name):
+        with open("battle_simulator/characters.csv", "r", newline="") as file:
+            reader = csv.reader(file)
+            next(reader)  # Skip header row
+            for row in reader:
+                if row[0].lower() == character_name.lower():
+                    return {
+                        "hp": 100,
+                        "attack_min": int(int(row[4]) // 2),  # Convert strength to int before division
+                        "attack_max": int(row[4]),      # Max attack is the full strength stat
+                        "defense": int(row[5]),
+                        "dodge_chance": int(row[3]),    # Dodge chance now based on speed
+                        "crit_chance": int(row[6])      # Critical hit chance
+                    }
+        return None
     characters = get_character_list()
     if len(characters) < 2:
         print("Not enough characters available! Returning to the main menu...")
