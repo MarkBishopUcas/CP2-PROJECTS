@@ -7,7 +7,6 @@ Battle Simulator is a turn-based combat game where players choose a character an
 
 ## Execution and Usage
 ---
-Short paragraph here, maybe a bulleton list
 * TO BATTLE! - Engage in a fight against the CPU.
 * Character Creation - Create new characters.
 
