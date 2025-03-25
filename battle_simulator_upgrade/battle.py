@@ -5,7 +5,7 @@ import chatecter_creation
 # Function to get the list of available characters from the CSV file
 def get_character_list():
     characters = []
-    with open("battle_simulator/characters.csv", "r", newline="") as file:
+    with open("battle_simulator_upgrade/characters.csv", "r", newline="") as file:
         reader = csv.reader(file)
         next(reader)  # Skip header row
         for row in reader:
@@ -50,7 +50,7 @@ def attack_damage(attacker, attacker_stats, defender_stats):
 def pve_battle():
     # Function to load character stats from the CSV file
     def load_character_stats(character_name):
-        with open("battle_simulator/characters.csv", "r", newline="") as file:
+        with open("battle_simulator_upgrade/characters.csv", "r", newline="") as file:
             reader = csv.reader(file)
             next(reader)  # Skip header row
             for row in reader:
@@ -110,6 +110,7 @@ def pve_battle():
         if cpu_stats["hp"] <= 0:
             print(f"{cpu} has been defeated! {player} wins!")
             chatecter_creation.level_up_character(player.lower())
+            chatecter_creation.record_loss(cpu.lower())  # Record loss for CPU
             break
 
         print(f"\n{cpu}'s Turn! Current HP: {cpu_stats['hp']}")
@@ -130,7 +131,8 @@ def pve_battle():
         #checks if the player is dead, if the player is dead, then the cpu's charecter wins, and gains a level for winning.
         if player_stats["hp"] <= 0:
             print(f"{player} has been defeated! {cpu} wins!")
-            chatecter_creation.level_up_character(cpu.lower()) 
+            chatecter_creation.level_up_character(cpu.lower())
+            chatecter_creation.record_loss(player.lower())
             break
 
 # Start a PvE battle
