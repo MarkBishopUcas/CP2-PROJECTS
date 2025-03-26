@@ -18,17 +18,17 @@ def menu_select(*args):
 
             menu_input = int(input("Please type the number corosponding to your selection: "))
 
+            if menu_input not in items:     #essentially saying, if the users input, isnt in the list of numbers created earlier, then its not valid.
+
+                print(f"\nPlease only type numbers 1 - {len(args)-1} ")     #gives the user an example range to enter
+
+            else:
+
+                return menu_input   #returns the number as an output of the function.
+
         except:
 
-            print("Plesae only enter a whole number")
-
-        if menu_input not in items:     #essentially saying, if the users input, isnt in the list of numbers created earlier, then its not valid.
-
-            print(f"Please only type numbers 1 - {len(args)-1} ")     #gives the user an example range to enter
-
-        else:
-
-            return menu_input   #returns the number as an output of the function. 
+            print("\nPlease only enter a whole number")
 
 """"
 Example
@@ -46,9 +46,10 @@ Please select your option:
 (4) option#4
 Please type the number corosponding to your selection:
 
+if the selects one of the options, its returned, so if the user inputed 1 here, it would output 1
+
 returns entered number while checking to make sure it fits the paramaters set 
 
 If you want to be fancy with it, and have the user create their own menu, you can do print(menu_select(input("message: "),input("paramater 1: "),input("paramater 2: "),input("paramater 3: "),input("paramater 4: ")))
 """
 #end of menu select function
-print(menu_select("Please select your option","option #1","option #2","option #3","option#4"))
