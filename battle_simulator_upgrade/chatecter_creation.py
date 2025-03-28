@@ -83,9 +83,9 @@ def create_char():
     if backstory == "random":
         backstory = fake.text(max_nb_chars=200)
 
-    county = input("\nPlease enter your country, or type 'random' for a random country: ").lower()
-    if county == "random":
-        county = fake.county()
+    country = input("\nPlease enter your country, or type 'random' for a random country: ").lower()
+    if country == "random":
+        country = fake.country()
 
     char_class = get_class_choice(stats)
     attribute = get_attribute_choice(stats)
@@ -104,7 +104,7 @@ def create_char():
         "level": 0,
         "loss": 0,
         "backstory": backstory,
-        "country": county
+        "country": country
     }
     data.append(new_char)
     save_char_csv(data)
