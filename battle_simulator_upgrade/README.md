@@ -1,3 +1,4 @@
+"""
 # Battle Simulator
 
 ## Project Description
@@ -20,7 +21,7 @@ Battle Simulator is a turn-based combat game where players choose a character an
 1. Install Python (if not already installed).
 2. Install required dependencies using:
    ```sh
-   pip install -r requirements.txt
+   pip install faker matplotlib pandas
    ```
 3. Run the game by executing:
    ```sh
@@ -39,14 +40,23 @@ Battle Simulator is a turn-based combat game where players choose a character an
   import random
   ```
 - **Faker Module** - Generates random backstories and character names.
+  ```sh
+  pip install faker
+  ```
   ```python
   import faker
   ```
 - **Matplotlib** - Visualizes data such as win/loss ratios and attributes through bar graphs and scatter plots.
+  ```sh
+  pip install matplotlib
+  ```
   ```python
   import matplotlib
   ```
 - **Pandas** - Analyzes character data and generates statistical summaries and correlation matrices.
+  ```sh
+  pip install pandas
+  ```
   ```python
   import pandas
   ```
@@ -67,3 +77,4 @@ I am Mark Bishop, a developer interested in game development and coding challeng
 ## Change Log
 ---
 - None yet.
+"""
